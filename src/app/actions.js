@@ -30,6 +30,7 @@ export async function suscribeEmail(_, formData) {
   if (response.ok) {
     return { message: "You have been subscribed", status: response.status };
   }
+  const json = await response.json();
 
-  return { message: json.title, status: json.status };
+  return { message: json.title, status: response.status };
 }
