@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { suscribeEmail } from "./actions";
 
 export default function Home() {
