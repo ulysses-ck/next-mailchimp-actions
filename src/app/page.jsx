@@ -1,9 +1,16 @@
+"use client";
 import { suscribeEmail } from "./actions";
+import { useFormState } from "react-dom";
 
 export default function Home() {
+  const [data, action] = useFormState(suscribeEmail, {
+    message: "",
+    status: 0,
+  });
+
   return (
     <main className="flex flex-col justify-center items-center min-h-screen">
-      <form className="flex flex-col gap-2" action={suscribeEmail}>
+      <form className="flex flex-col gap-2" action={action}>
         <label htmlFor="email" className="flex gap-2 items-center">
           <span>Email:</span>
           <input
@@ -21,6 +28,10 @@ export default function Home() {
           Add contact
         </button>
       </form>
+
+      {data.message ? (
+        <small>{data.message}</small>
+      ) : null}
     </main>
   );
 }
